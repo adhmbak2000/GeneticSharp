@@ -9,8 +9,8 @@ public class Program
     public static void Main(string[] args)
     {
         // 1. تحديد مسار ملفات الإدخال والإخراج
-        string inputFilePath = "C:/YourData/data.csv"; 
-        string outputFilePath = "C:/YourData/optimal_weights.csv"; // مسار حفظ النتائج
+        string inputFilePath = "C:\Users\AdhOom\Documents\GitHub\GeneticSharp\data.csv"; 
+        string outputFilePath = "C:\Users\AdhOom\Documents\GitHub\GeneticSharp\dataoutput.csv"; // مسار حفظ النتائج
 
         // 2. قراءة البيانات
         var data = DataReader.ReadCsv(inputFilePath);
