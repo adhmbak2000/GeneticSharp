@@ -1,0 +1,15 @@
+C:\Users\AdhOom\Documents\GitHub\GeneticSharp\GeneticAlgorithmProject\bin\Debug\net9.0\GeneticAlgorithmProject.exe
+C:\Users\AdhOom\Documents\GitHub\GeneticSharp\GeneticAlgorithmProject\bin\Debug\net9.0\GeneticAlgorithmProject.deps.json
+C:\Users\AdhOom\Documents\GitHub\GeneticSharp\GeneticAlgorithmProject\bin\Debug\net9.0\GeneticAlgorithmProject.runtimeconfig.json
+C:\Users\AdhOom\Documents\GitHub\GeneticSharp\GeneticAlgorithmProject\bin\Debug\net9.0\GeneticAlgorithmProject.dll
+C:\Users\AdhOom\Documents\GitHub\GeneticSharp\GeneticAlgorithmProject\bin\Debug\net9.0\GeneticAlgorithmProject.pdb
+C:\Users\AdhOom\Documents\GitHub\GeneticSharp\GeneticAlgorithmProject\obj\Debug\net9.0\GeneticAlgorithmProject.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\AdhOom\Documents\GitHub\GeneticSharp\GeneticAlgorithmProject\obj\Debug\net9.0\GeneticAlgorithmProject.AssemblyInfoInputs.cache
+C:\Users\AdhOom\Documents\GitHub\GeneticSharp\GeneticAlgorithmProject\obj\Debug\net9.0\GeneticAlgorithmProject.AssemblyInfo.cs
+C:\Users\AdhOom\Documents\GitHub\GeneticSharp\GeneticAlgorithmProject\obj\Debug\net9.0\GeneticAlgorithmProject.csproj.CoreCompileInputs.cache
+C:\Users\AdhOom\Documents\GitHub\GeneticSharp\GeneticAlgorithmProject\obj\Debug\net9.0\GeneticAlgorithmProject.sourcelink.json
+C:\Users\AdhOom\Documents\GitHub\GeneticSharp\GeneticAlgorithmProject\obj\Debug\net9.0\GeneticAlgorithmProject.dll
+C:\Users\AdhOom\Documents\GitHub\GeneticSharp\GeneticAlgorithmProject\obj\Debug\net9.0\refint\GeneticAlgorithmProject.dll
+C:\Users\AdhOom\Documents\GitHub\GeneticSharp\GeneticAlgorithmProject\obj\Debug\net9.0\GeneticAlgorithmProject.pdb
+C:\Users\AdhOom\Documents\GitHub\GeneticSharp\GeneticAlgorithmProject\obj\Debug\net9.0\GeneticAlgorithmProject.genruntimeconfig.cache
+C:\Users\AdhOom\Documents\GitHub\GeneticSharp\GeneticAlgorithmProject\obj\Debug\net9.0\ref\GeneticAlgorithmProject.dll
