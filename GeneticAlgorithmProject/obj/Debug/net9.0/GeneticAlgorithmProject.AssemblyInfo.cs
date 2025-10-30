@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GeneticAlgorithmProject")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dee1a9061330258de1e15e3811ebdafa7cddcfa7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3aeaaf0f77aee43c34bc452237b28e11291730b0")]
 [assembly: System.Reflection.AssemblyProductAttribute("GeneticAlgorithmProject")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GeneticAlgorithmProject")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

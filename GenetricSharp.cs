@@ -8,43 +8,35 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        // 1. تحديد مسار ملفات الإدخال والإخراج
         string inputFilePath = "C:\\Users\\AdhOom\\Documents\\GitHub\\GeneticSharp\\data.csv"; 
-        string outputFilePath = "C:\\Users\\AdhOom\\Documents\\GitHub\\GeneticSharp\\dataoutput.csv"; // مسار حفظ النتائج
+        string outputFilePath = "C:\\Users\\AdhOom\\Documents\\GitHub\\GeneticSharp\\dataoutput.csv"; 
 
-        // 2. قراءة البيانات
         var data = DataReader.ReadCsv(inputFilePath);
         if (data == null || data.Count == 0) return;
 
-        // 3. إعداد الخوارزمية
         int populationSize = 100;
         double mutationRate = 0.05;
         int maxGenerations = 1000;
 
         var ga = new GeneticAlgorithm(populationSize, mutationRate, data);
 
-        Console.WriteLine($"Starting GA to find {data.First().Inputs.Length} weights...");
+        Console.WriteLine($"Starting GA to find {data.First().Inputs.Length} positive weights...");
         
-        // 4. تشغيل التطور
         ga.Evolve(maxGenerations);
 
-        // 5. طباعة النتائج وحفظها
         Console.WriteLine("\n--- Optimal Solution Found ---");
-        Console.WriteLine($"Best Fitness Score: {ga.BestIndividual.Fitness:F8}");
+        Console.WriteLine($"Best Fitness Score: {ga.BestIndividual.Fitness:F8}"); // يبقى رقم عشري
         
-        // 🥇 طباعة تمثيل أفضل كروموسوم (الأوزان)
-        // نستخدم LINQ لتنسيق كل رقم عشري قبل ربطها بفاصلة
+        // طباعة تمثيل أفضل كروموسوم (أرقام عشرية موجبة)
         var formattedGenes = ga.BestIndividual.Genes.Select(g => g.ToString("F4"));
         string geneRepresentation = string.Join(" | ", formattedGenes);
 
-        Console.WriteLine($"Chromosome Genes (W1 | W2 | ...): {geneRepresentation}");
+        Console.WriteLine($"Chromosome Weights (W1 | W2 | ...): {geneRepresentation}");
         
-        // 💾 حفظ النتائج في ملف CSV
         WriteSolutionToCsv(ga.BestIndividual, outputFilePath);
         Console.WriteLine($"\nOptimal weights saved to: {outputFilePath}");
     }
 
-    // دالة لحفظ أفضل كروموسوم في ملف CSV (لم تتغير)
     private static void WriteSolutionToCsv(Individual bestIndividual, string filePath)
     {
         var sb = new StringBuilder();
@@ -62,7 +54,7 @@ public class Program
         }
         sb.AppendLine(header);
         
-        string values = "Value";
+        string values = "Value (0 to 1)";
         foreach (var gene in bestIndividual.Genes)
         {
             values += $",{gene.ToString("R")}"; 
@@ -74,8 +66,7 @@ public class Program
 }
 
 // ====================================================================
-// A. قراءة البيانات (DataReader, DataRow)
-// ... الكود كما هو ...
+// A. قراءة البيانات (DataReader, DataRow) - لا تعديل
 // ====================================================================
 
 public class DataRow
@@ -111,8 +102,7 @@ public static class DataReader
 }
 
 // ====================================================================
-// B. الكروموسوم (Individual) واللياقة (Fitness)
-// ... الكود كما هو ...
+// B. الكروموسوم (Individual) واللياقة (Fitness) - **تم التعديل**
 // ====================================================================
 
 public class Individual
@@ -124,9 +114,10 @@ public class Individual
     public Individual(int geneCount)
     {
         Genes = new double[geneCount];
+        // التهيئة الآن بين 0.0 و 1.0 فقط
         for (int i = 0; i < geneCount; i++)
         {
-            Genes[i] = (Rng.NextDouble() * 20.0) - 10.0;
+            Genes[i] = Rng.NextDouble(); 
         }
     }
     
@@ -152,7 +143,7 @@ public class Fitness
 
     public void Evaluate(Individual individual)
     {
-        double[] weights = individual.Genes;
+        double[] weights = individual.Genes; 
         double totalSquaredError = 0;
 
         foreach (var row in _data)
@@ -161,7 +152,9 @@ public class Fitness
             
             for (int i = 0; i < weights.Length; i++)
             {
-                predictedValue += row.Inputs[i] * weights[i];
+                // التأكد من أن الوزن موجب فقط (لغرض الحساب)
+                double positiveWeight = Math.Max(0, weights[i]);
+                predictedValue += row.Inputs[i] * positiveWeight;
             }
 
             double error = row.Target - predictedValue;
@@ -173,8 +166,7 @@ public class Fitness
 }
 
 // ====================================================================
-// C. الخوارزمية الجينية (GeneticAlgorithm)
-// ... الكود كما هو ...
+// C. الخوارزمية الجينية (GeneticAlgorithm) - **تم التعديل**
 // ====================================================================
 
 public class GeneticAlgorithm
@@ -264,16 +256,21 @@ public class GeneticAlgorithm
             newGenes[i] = (i < point) ? parent1.Genes[i] : parent2.Genes[i];
         }
 
-        return new Individual(newGenes);
+        return new Individual(newGenes); 
     }
     
+    // الطفرة: الحصر ضمن [0.0, 1.0] لضمان الأرقام العشرية الموجبة
     private void Mutate(Individual individual)
     {
         for (int i = 0; i < individual.Genes.Length; i++)
         {
             if (Rng.NextDouble() < MutationRate)
             {
+                // تغيير عشوائي صغير
                 individual.Genes[i] += (Rng.NextDouble() * 2.0 - 1.0) * 0.5;
+                
+                // الحصر ضمن النطاق المطلوب: [0.0, 1.0]
+                individual.Genes[i] = Math.Clamp(individual.Genes[i], 0.0, 1.0);
             }
         }
     }
